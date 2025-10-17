@@ -1,14 +1,22 @@
-from datetime import date, datetime
+from datetime import datetime
 
-def get_days_from_today(date):
-    return (date.today() - date).days
-
-while True:
+def get_days_from_today(date_str):
     try:
-        user_date = datetime.strptime(input("Enter a date (YYYY-MM-DD): "), "%Y-%m-%d").date()
-        break
-    except ValueError:
-        print("Invalid date format. Please try again.")
+        # 1 Перетворюємо вхідний рядок у об’єкт datetime.date
+        input_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        
+        # 2 Отримуємо поточну дату
+        today = datetime.today().date()
+        
+        # 3 Обчислюємо різницю у днях (today - input_date)
+        delta = today - input_date
+        
+        # 4 Повертаємо різницю у днях (може бути від’ємною)
+        return delta.days
 
-days_from_today = get_days_from_today(user_date)
-print(f"Days from today: {days_from_today}")
+    except ValueError:
+        # Якщо формат дати неправильний — повідомлення користувачу
+        print("Помилка: неправильний формат дати. Використовуйте 'YYYY-MM-DD'.")
+        return None
+    
+print(f'Різницю у днях становить: {get_days_from_today("2021-10-09")} днів.')
