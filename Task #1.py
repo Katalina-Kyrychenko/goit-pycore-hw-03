@@ -15,8 +15,14 @@ def get_days_from_today(date_str):
         return delta.days
 
     except ValueError:
-        # Якщо формат дати неправильний — повідомлення користувачу
-        print("Помилка: неправильний формат дати. Використовуйте 'YYYY-MM-DD'.")
+        # 5 Обробка некоректного формату
+        print(f"Помилка: '{date_str}' — неправильний формат дати. Використовуйте формат 'YYYY-MM-DD'.")
         return None
-    
-print(f'Різницю у днях становить: {get_days_from_today("2021-10-09")} днів.')
+
+def print_days_difference(days_difference):
+    if days_difference is not None:
+        print(f'Різниця у днях становить: {days_difference} днів.')
+
+print_days_difference(get_days_from_today("2021-10-09"));
+print_days_difference(get_days_from_today("13.14.2000"));
+print_days_difference(get_days_from_today("2025/05/01"));
