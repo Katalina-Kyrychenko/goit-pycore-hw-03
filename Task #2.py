@@ -2,6 +2,9 @@ import random
 
 def get_numbers_ticket(min, max, count):
     # Перевірка коректності вхідних параметрів
+    if (min < 1 or max > 1000):
+        return []
+    # Перевірка коректності вхідних параметрів
     if not (min < max and count > 0 and count <= (max - min + 1)):
         return []
     # Генерація унікальних випадкових чисел
